@@ -10,11 +10,13 @@ from sklearn.pipeline import Pipeline
 
 from src.model.base import Model
 
-class SklearnModel(Model):
-    """Implementación de Model usando sklearn Pipeline."""
+class LogisticRegressionModel(Model):
+    """
+    Implementación de Model usando sklearn Pipeline.
+    """
     
     def __init__(self, pipeline: Pipeline):
-        self._pipeline = pipeline
+        self._pipeline: Pipeline = pipeline
     
     def predict(self, texts: List[str]) -> List[str]:
         return self._pipeline.predict(texts).tolist()
@@ -23,13 +25,13 @@ class SklearnModel(Model):
         return self._pipeline.predict_proba(texts).tolist()
     
     @classmethod
-    def load(cls, path: Path) -> "SklearnModel":
+    def load(cls, path: Path) -> "LogisticRegressionModel":
         """Carga un modelo desde un archivo .pkl"""
         pipeline = joblib.load(path)
         return cls(pipeline)
     
     @classmethod
-    def train(cls, data_path: str, output_path: str) -> "SklearnModel":
+    def train(cls, data_path: str, output_path: str) -> "LogisticRegressionModel":
         """Entrena y guarda el modelo."""
         df = pd.read_csv(data_path)
         X, y = df['message'], df['sentiment']
