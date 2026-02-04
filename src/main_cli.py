@@ -11,12 +11,12 @@ DATA_PATH = "data/reviews.csv"
 
 
 def main():
-    analyzer = create_sentiment_analyzer_with_logistic_regression()
-    
     print("The Smart Feedback")
     print("> Escribe 'exit' para salir\n")
     print("> Escribe 'change-model-to-rf' para cambiar al modelo con Random Forest\n")
     print("> Escribe 'change-model-to-lr' para cambiar al modelo con Regresión Logística\n")
+    
+    analyzer = create_sentiment_analyzer_with_logistic_regression() # Modelo por defecto
     
     while True:
         text = input("Comentario: ").strip()
