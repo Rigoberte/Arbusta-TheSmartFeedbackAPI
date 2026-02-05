@@ -1,16 +1,10 @@
 import customtkinter as ctk
-from pathlib import Path
 from datetime import datetime
 
 from src.model.logistic_regression_model import LogisticRegressionModel
 from src.model.random_forest_model import RandomForestModel
 from src.analyzer.sentiment_analyzer import SentimentAnalyzer
-
-
-# Configuración de rutas
-LOGISTIC_REGRESSION_MODEL_PATH = Path("src/model/logistic_regression_model.pkl")
-RANDOM_FOREST_MODEL_PATH = Path("src/model/random_forest_model.pkl")
-DATA_PATH = "data/reviews.csv"
+from src.settings import LOGISTIC_REGRESSION_MODEL_PATH, RANDOM_FOREST_MODEL_PATH, DATA_PATH
 
 # Configuración de colores
 COLORS = {

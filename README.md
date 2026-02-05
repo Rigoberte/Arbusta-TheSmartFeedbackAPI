@@ -105,7 +105,8 @@ pytest tests/ -v
 │   └── reviews.csv
 ├── tests/
 │   ├── test_sentiment_analyzer.py
-│   └── test_sklearn_model.py
+│   ├── test_logistic_regression_model.py
+│   └── test_random_forest_model.py
 ├── requirements.txt
 └── README.md
 ```

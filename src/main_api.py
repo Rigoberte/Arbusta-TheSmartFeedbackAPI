@@ -1,4 +1,3 @@
-from pathlib import Path
 from enum import Enum
 
 from fastapi import FastAPI, HTTPException
@@ -7,11 +6,7 @@ from pydantic import BaseModel, Field
 from src.model.logistic_regression_model import LogisticRegressionModel
 from src.model.random_forest_model import RandomForestModel
 from src.analyzer.sentiment_analyzer import SentimentAnalyzer
-
-
-LOGISTIC_REGRESSION_MODEL_PATH = Path("src/model/logistic_regression_model.pkl")
-RANDOM_FOREST_MODEL_PATH = Path("src/model/random_forest_model.pkl")
-DATA_PATH = "data/reviews.csv"
+from src.settings import LOGISTIC_REGRESSION_MODEL_PATH, RANDOM_FOREST_MODEL_PATH, DATA_PATH
 
 app = FastAPI(
     title="The Smart Feedback API",

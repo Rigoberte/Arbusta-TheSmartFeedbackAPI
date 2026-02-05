@@ -1,20 +1,20 @@
 import pytest
 from pathlib import Path
 
-from src.model.logistic_regression_model import LogisticRegressionModel
+from src.model.random_forest_model import RandomForestModel
 from src.model.base import Model
 
 
-class TestLogisticRegressionModelIntegration:
+class TestRandomForestModelIntegration:
     @pytest.fixture
-    def trained_model(self, tmp_path: Path) -> LogisticRegressionModel:
+    def trained_model(self, tmp_path: Path) -> RandomForestModel:
         """Entrena un modelo temporal para tests."""
         data_path = Path("data/reviews.csv")
         if not data_path.exists():
             pytest.skip("reviews.csv no encontrado")
         
         output_path = tmp_path / "test_model.pkl"
-        return LogisticRegressionModel.train(str(data_path), str(output_path))
+        return RandomForestModel.train(str(data_path), str(output_path))
     
     def test_train_creates_model_file(self, tmp_path):
         data_path = Path("data/reviews.csv")
@@ -23,16 +23,21 @@ class TestLogisticRegressionModelIntegration:
         
         output_path = tmp_path / "test_model.pkl"
         
-        LogisticRegressionModel.train(str(data_path), str(output_path))
+        RandomForestModel.train(str(data_path), str(output_path))
         
         assert output_path.exists()
     
-    def test_load_returns_sklearn_model(self, tmp_path):
+    def test_load_returns_random_forest_model(self, tmp_path):
+        data_path = Path("data/reviews.csv")
+        if not data_path.exists():
+            pytest.skip("reviews.csv no encontrado")
+        
         output_path = tmp_path / "test_model.pkl"
+        RandomForestModel.train(str(data_path), str(output_path))
         
-        loaded = LogisticRegressionModel.load(output_path)
+        loaded = RandomForestModel.load(output_path)
         
-        assert isinstance(loaded, LogisticRegressionModel)
+        assert isinstance(loaded, RandomForestModel)
     
     def test_predict_returns_valid_sentiment(self, trained_model: Model):
         result = trained_model.predict(["Me encanta este producto"])
