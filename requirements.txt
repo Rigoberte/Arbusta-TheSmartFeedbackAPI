@@ -2,3 +2,15 @@ scikit-learn>=1.4.0
 pandas>=2.0.0
 joblib>=1.3.0
 pytest>=8.0.0
+
+# API
+fastapi>=0.95.0
+pydantic>=2.0.0
+
+# GUI
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+wordcloud>=1.9.0
+streamlit>=1.25.0
+customtkinter>=5.2.0
